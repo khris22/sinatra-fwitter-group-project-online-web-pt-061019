@@ -1,3 +1,5 @@
+ORIGINALLY submitted on Sept.28(Saturday)
+
 We needed to delete my  first repository because it would not let us push as a group! 
 
 We both have submitted individually!
