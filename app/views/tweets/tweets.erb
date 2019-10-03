@@ -1,0 +1,31 @@
+<section class="section tweets-section">
+  <div class="columns">
+    <div class="column is-full banners tweets-banner"></div>
+  </div>
+  <div class="columns">
+    <div class="column is-one-third tweets-left">
+      <h1 class="title has-text-black has-text-left has-text-weight-bold is-size-5">Welcome, @<%= @user.username %>!</h1>
+
+      <p><a href="/tweets" class="subtitle user-menu is-size-6"><i class="fas fa-home fa-sm"></i> &nbsp;Dashboard</a><br>
+
+      <a href="/tweets/new" class="subtitle user-menu is-size-6"><i class="fas fa-quote-left fa-sm"></i> &nbsp;New Tweet</a><br>
+
+      <a href="/logout" class="subtitle user-menu is-size-6"><i class="fas fa-sign-out-alt fa-sm"></i> &nbsp;Log Out</a></p>
+    </div>
+
+    <div class="column tweets-right">
+      <h1 class="title has-text-weight-semibold is-size-3-desktop is-size-5-mobile has-text-grey-dark">Dashboard</h1><br>
+
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <% Tweet.all.each do |tweet| %>
+            <strong class="username-handle">@<%= tweet.user.username %></strong><br>
+            <p class="has-text-grey-darker"><%= tweet.content %></p><hr>
+            <% end %>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

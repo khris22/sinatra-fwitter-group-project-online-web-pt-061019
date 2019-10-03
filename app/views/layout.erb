@@ -1,15 +1,176 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"/>
+    <script src="https://kit.fontawesome.com/ff55eb9f75.js"></script>
     <title>Fwitter</title>
+
+    <style>
+      /* General */
+      body, html {
+        background: #fff;
+        font-size: 100%;
+        font-family: 'Open Sans', sans serif; 
+        height: 100%;
+      }
+      a {
+        text-decoration: none;
+        color: #4BACD2;
+      }
+      a:hover {
+        color: #657786;
+      }
+      .button:hover, header a:hover {
+        text-decoration: none;
+      }
+      hr {
+        background-color: rgba(0,0,0,0.1);
+        border: none;
+        display: block;
+        height: 2px;
+        margin: 1.5rem 0;
+      }
+      /* Buttons */
+      .submit-btn {
+        background-color: #4BACD2;
+        color: #fff;
+        font-weight: bold;
+        font-size: .90em;
+        text-decoration: none;
+      }
+      .submit-btn:hover {
+        background: #fff;
+        color: #4BACD2;
+      }
+      .edit-btn {
+        background: #4BACD2;
+        color: #fff;
+      }
+      .edit-btn:hover {
+        background: #fff;
+        color: #4BACD2;
+      }
+      .delete-btn, .delete-btn:hover {
+        color: #f00;
+      }
+      .delete-btn:hover {
+        background: #f00;
+        color: #fff;
+      }
+      /* Forms */
+      .form-style {
+        padding: 50px;
+        background: #fff;
+      }
+      .form-style input {
+        width: 100%;
+      }
+      form p {
+        font-size: .90em;
+      }      
+      /* Header/Logo */
+      header {
+        border-bottom: 2px solid #657786;
+      }
+      header .logo {
+        padding: 15px 10px;
+        background-color: #fff;
+      }
+      header .logo h1 {
+        display: inline;
+      }
+      header .logo h1, header .fa-dove {
+        color: #1DA1F2;
+        font-size: 1.25em;
+        text-transform: uppercase;
+        margin: 10px 0;
+      }
+      /* Index */
+      .index-hero {
+        margin: 0;
+        background: linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url(https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) center / cover;
+      }
+      .index-container {
+        margin: 40% auto;
+        padding: 15px;
+      }
+      /* Sign up */
+      .signup-hero {        
+        background: linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url(https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1685&q=80) bottom / cover;
+      }
+      .signup-container, .login-container {
+        margin: 8% 4%;
+        padding: 30px;
+      }
+      .signup-left {
+        margin-gap: 2%;
+      }
+      /* Login */
+      .login-hero {        
+        background: linear-gradient(0deg,rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url(https://images.unsplash.com/photo-1543269664-6e49e46d59a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) bottom / cover;
+      }
+      /* Tweets */
+      .banners {
+        width: 100%;
+        height: 450px;
+        background-repeat: no-repeat;
+        position: relative;
+        margin: -3% 0 0;
+      }
+      .tweets-new-banner {
+        background: url("https://images.unsplash.com/photo-1529022805552-1c88a713c1c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1525&q=80") center / cover;
+      }
+      .tweets-show-banner {
+        background: url("https://images.unsplash.com/photo-1470754260170-299cad39501f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80") center / cover;
+      }
+      .tweets-edit-banner {
+        background: url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80") bottom / cover;
+      }
+      .tweets-banner {
+        background: url("https://images.unsplash.com/photo-1514832926019-2c0dd4b55227?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1948&q=80") top / cover;
+      }
+      .tweets-section {
+        width: 100%;
+        background-color: #ffffff;
+        background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+      }
+      .tweets-left {
+        background: rgba(170,184,194,0.6);    
+        padding: 60px;
+        min-height: 100%;
+      }
+      .tweets-right {
+        padding: 50px;  
+        border: 1px solid gray;
+        background: rgba(255,255,255,0.4);
+        width: 100%;
+        height: 800px;
+        overflow: auto;     
+      }
+      .tweet-content {
+        margin: 25px 0;
+      }
+      .username-handle {
+        color: #657786;
+      }
+      .user-menu {
+        color: #1DA1F2;
+      }
+    </style>
   </head>
+
   <body>
-
-    <div class="container">
-      <h1>Welcome to Fwitter!</h1>
-      <h2>This is located in layout.erb!</h2>
-      <h2>Don't forget to <strong>yield</strong> your views!</h2>
-    </div>
-
+    <section>
+      <div class="container">
+        <header>
+          <div class="logo has-text-centered-touch is-size-5-touch"><a href="/"><i class="fas fa-dove"></i> <h1>Fwitter</h1></a></div>
+        </header>
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

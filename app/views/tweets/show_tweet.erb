@@ -1,0 +1,37 @@
+<section class="section tweets-section">
+  <div class="columns">
+    <div class="column is-full banners tweets-show-banner"></div>
+  </div>
+  <div class="columns">
+    <div class="column is-one-third tweets-left">
+      <h1 class="title has-text-black has-text-left has-text-weight-bold is-size-5">Hello, @<%= @user.username %>!</h1>
+
+      <p><a href="/tweets" class="subtitle user-menu is-size-6 is-size-7-touch"><i class="fas fa-home fa-sm"></i> &nbsp;Dashboard</a><br>
+      
+      <a href="/tweets/new" class="subtitle user-menu is-size-6 is-size-7-touch"><i class="fas fa-quote-left fa-sm"></i> &nbsp;New Tweet</a><br>
+
+      <a href="/logout" class="subtitle user-menu is-size-6 is-size-7-touch"><i class="fas fa-sign-out-alt fa-sm"></i> &nbsp;Log Out</a></p>
+    </div>
+
+    <div class="column tweets-right">
+      <h1 class="title has-text-weight-semibold is-size-4-desktop is-size-5-touch has-text-grey-dark">Your New Tweet</h1>
+
+      <p class="tweet-content"><%= @tweet.content %></p>
+
+      <form method="get" action="/tweets/<%= @tweet.id %>/edit">
+        <div class="field">
+            <input type="submit" name="edit" id="edit-tweet" value="Edit Tweet" class="edit-btn button is-small">
+        </div>        
+      </form>
+
+      <form method="post" action="/tweets/<%= @tweet.id %>">
+        <div class="field">
+            <input id="hidden" type="hidden" name="_method" value="Delete">
+        </div>  
+        <div class="field">
+            <input type="submit" value="Delete Tweet" class="delete-btn button is-small">
+        </div>  
+      </form>
+    </div>
+  </div>
+</section>
